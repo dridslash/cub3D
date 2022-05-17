@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_parse.h                                       :+:      :+:    :+:   */
+/*   some_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 15:58:23 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/17 17:15:42 by oessayeg         ###   ########.fr       */
+/*   Created: 2022/05/17 18:11:32 by oessayeg          #+#    #+#             */
+/*   Updated: 2022/05/17 18:13:46 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILE_PARSE_H
-# define FILE_PARSE_H
+#include "file_parse.h"
 
-#include "get_next_line.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <strings.h>
+char *ft_strdup(char *string)
+{
+    int     i;
+    char    *return_string;
 
-//File handling
-void    check_args(int argc);
-void    check_file_name(char *file);
-void    check_file_permissions(char *file);
-
-#endif
+    i = 0;
+    return_string = malloc(sizeof(char) * (ft_strlen(string) + 1));
+    while (string[i] != '\0')
+    {
+        return_string[i] = string[i];
+        i++;
+    } 
+    return_string[i] = '\0';
+    return (return_string);
+}
