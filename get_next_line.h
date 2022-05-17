@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 15:45:14 by oessayeg          #+#    #+#             */
-/*   Updated: 2021/12/22 19:53:45 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:33:32 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
@@ -17,6 +18,7 @@
 # include <stdlib.h>
 
 # include <limits.h>
+#define BUFFER_SIZE 10000
 
 int		check_nl(char *string);
 int		ft_strlen(char *string);
