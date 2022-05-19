@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_parse.c                                       :+:      :+:    :+:   */
+/*   file_parse1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:34:11 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/17 18:17:51 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:52:25 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char **push_st(char **double_p, char *to_put_in)
     i = 0;
     while (double_p[i] != NULL)
         i++;
-    ret = malloc(sizeof(char *) * (i + 1));
+    ret = malloc(sizeof(char *) * (i + 2));
     i = 0;
     while (double_p[i] != NULL)
     {
@@ -53,8 +53,8 @@ char **file_to_2darr(char *file)
     tmp_string = get_next_line(fd);
     while (tmp_string != NULL)
     {
-    printf("Here\n");
         return_va = push_st(return_va, tmp_string);
+        free(tmp_string);
         tmp_string = get_next_line(fd);
     }
     return (return_va);
@@ -62,9 +62,9 @@ char **file_to_2darr(char *file)
 
 int main(int argc, char **argv)
 {
-    char **double_p;
-    argc = 1;
-    double_p = file_to_2darr(argv[1]);
-
+    char    **double_p;
+    t_info  map_info;
+    
+    double_p = check_file_args(argc, argv);
     return (0);
 }

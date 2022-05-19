@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_error_fcts.c                                  :+:      :+:    :+:   */
+/*   file_error_fcts1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:00:55 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/17 17:12:52 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/19 16:53:37 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,22 @@ void    check_file_permissions(char *file)
         perror(file);
         exit(EXIT_FAILURE);
     }
+}
+
+char **check_file_args(int argc, char **argv)
+{
+    char **ptr;
+
+    ptr = NULL;
+    check_args(argc);
+    check_file_name(argv[1]);
+    check_file_permissions(argv[1]);
+    ptr = file_to_2darr(argv[1]);
+    if (ptr == NULL || ft_lenp(ptr) < 9)
+    {
+        printf("Error\nFile not containing necessary informations.\n");
+        exit(EXIT_FAILURE);
+    }
+    check_infos(ptr);
+    return (ptr);   
 }
