@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:34:11 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/19 16:52:25 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/19 19:11:53 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,4 @@ char **file_to_2darr(char *file)
         tmp_string = get_next_line(fd);
     }
     return (return_va);
-}
-
-int main(int argc, char **argv)
-{
-    char    **double_p;
-    t_info  map_info;
-    
-    double_p = check_file_args(argc, argv);
-    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:00:55 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/19 16:53:37 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/19 19:11:16 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void check_file_name(char *file)
     {
         if (file[i] == '.')
         {
-            if (strcmp(&file[i], ".cub") == 0 && file[i + 4] == '\0')
+            if (ft_strncmp(&file[i], ".cub", 4) == 0 && file[i + 4] == '\0')
                 return ;
         }        
         i--; 
@@ -73,6 +73,5 @@ char **check_file_args(int argc, char **argv)
         printf("Error\nFile not containing necessary informations.\n");
         exit(EXIT_FAILURE);
     }
-    check_infos(ptr);
     return (ptr);   
 }
