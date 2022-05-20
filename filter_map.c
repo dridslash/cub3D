@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:34:28 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/05/19 18:28:06 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/05/20 11:53:33 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,33 @@ int count_line_for_map(char **map)
 //       holder_line = get_next_line(fd);
 //    }
 //    return (lenght);
+// }
+
+int get_lenght_based_chr(char *map)
+{
+   int c =0;
+   while(map[c])
+   {
+      c++;
+   }
+   return (c);
+}
+
+// int get_virtual_lenght(char *map)
+// {
+//    int c = 0;
+//    while(map[c] == ' ')
+//       c++;
+//    if(map[c + 1] == ' ')
+//    {
+//       while(map[c] == ' ')
+//          c++
+//    }
+//    while(map[c])
+//    {
+//       c++;
+//    }
+//    return (c);
 // }
 
 void check_pillar_walls(char *holder_line)
@@ -174,68 +201,53 @@ void check_line_zero_validity(char **map,int line_ind)
    }
 }
 
-void check_body_lines_for_zero(char **map, int line_ind)
+void check_body_lines_for_zero(char **map)
 {
-  int hold_ind;
-   int x = 0;
-   if (line_ind != 1 && line_ind != count_line_for_map(map))
-   {
-      hold_ind = line_ind - 1;
+  int hold_ind = 0;
+  int x = 0;
+   // if (line_ind != 1 && line_ind != count_line_for_map(map))
+   // {
       while(map[hold_ind])
       {
+         x = 0;
          while(map[hold_ind][x])
          {
-         if (map[hold_ind][x] == '0')
-         {
-            if (map[hold_ind - 1][x] == ' ' || map[hold_ind + 1][x] == ' ')
+            if (map[hold_ind][x] == '0')
             {
-               write(2,"map has a gap on it for 0",25);
-               exit(1);
+               if((map[hold_ind + 1][x] == ' ' || map[hold_ind + 1][x] == '\0' || map[hold_ind + 1][x] == '\n') 
+                  || (map[hold_ind - 1][x] == ' ' || map[hold_ind - 1][x] == '\0' || map[hold_ind - 1][x] == '\n'))
+               {
+                  write(2,"gap under or above a 0 || you have an empty line\n",49);
+                  exit(1);
+               }
             }
-         }
-         x++;
+            x++;
          }
          hold_ind++;
       }
-   }
+   // }
 }
 
-void check_body_lines_for_space(char **map, int line_ind)
+void check_body_lines(char **map)
 {
-   int hold_ind;
-   int x = 0;
-   int left = 0;
-   // int right = 0;
-   // int up = 0;
-   // int down = 0;
-     if (line_ind != 1 && line_ind != count_line_for_map(map))
+   check_body_lines_for_zero(map);
+}
+
+void check_for_empty_line(char **map)
+{
+   // int range = count_line_for_map(map);
+   int y = 0;
+   // int x = 0;
+   // int c = 0;
+   while(map[y])
+   {
+      if(get_lenght_based_chr(map[y]) == 1)
       {
-         hold_ind = line_ind - 1;
-         while(map[hold_ind])
-         {
-            while(map[hold_ind][x])
-            {
-               if (map[hold_ind][x] == ' ')
-               {
-                  left = x;
-                  while(map[hold_ind][left] == ' ')
-                     left --;
-                     if (map[hold_ind][left] != '1')
-                     {
-                     write(2,"gaaaap on left of space",23);
-                     }
-               }
-               x++;
-            }
-            hold_ind++;
-         }
+         write(2,"empty line in your map\n",23);
+         exit(1);
       }
-}
-
-void check_body_lines(char **map, int line_ind)
-{
-   check_body_lines_for_zero(map, line_ind);
-   // check_body_lines_for_space(map, line_ind);
+      y++;
+   }
 }
 
 void check_up_down(char **map)
@@ -245,9 +257,10 @@ void check_up_down(char **map)
    {
       observ_pillar_walls(map[y],y + 1, map);
       check_line_zero_validity(map, y);
-      check_body_lines(map, y + 1);
       y++;
    }
+   check_body_lines(map);
+   // check_for_empty_line(map);
 }
 
 char  *observer_checker_map(char **map)
