@@ -6,22 +6,22 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 13:02:45 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/20 16:07:57 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/20 19:15:40 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "file_parse.h"
 
 
-void check_struct(t_mapCheck *info)
+void check_struct(t_mapCheck *info, char **s)
 {
     if (!(info->ceiling_color == 1 && info->east_tex == 1
         && info->floor_color == 1 && info->north_tex == 1
         && info->south_tex == 1 && info->west_tex == 1))
-            exit_msg();
+            exit_msg(s);
 }
 
-int texture_check(char *string)
+int texture_check(char *string, char **s)
 {
     int i;
 
@@ -30,14 +30,16 @@ int texture_check(char *string)
     if (!((string[i] == 'N' && string[i + 1] == 'O')
         || (string[i] == 'S' && string[i + 1] == 'O')
         || (string[i] == 'W' && string[i + 1] == 'E')
-        || (string[i] == 'E' && string[i + 1] == 'A')))
-        exit_msg();
+        || (string[i] == 'E' && string[i + 1] == 'A'))
+        && string[i] != 'F' && string[i] != 'C')
+            exit_msg(s);
+    if (string[i] == 'C' || string[i] == 'F')
+        return (0);
     i += 2;
     skip_spaces(string, &i);
-    if (string[i] == '.' && string[i + 1] == '/' && string[i + 2] == '\n'
-        && string[i + 3] == '\0')
+    if (string[i] == '.' && string[i + 1] == '/' && string[i + 2] != '\n')
         return (1);
-    exit_msg();
+    exit_msg(s);
     return (0);
 }
 

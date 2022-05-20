@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:00:55 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/19 19:11:16 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/20 19:07:56 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,6 @@ char **check_file_args(int argc, char **argv)
     check_file_permissions(argv[1]);
     ptr = file_to_2darr(argv[1]);
     if (ptr == NULL || ft_lenp(ptr) < 9)
-    {
-        printf("Error\nFile not containing necessary informations.\n");
-        exit(EXIT_FAILURE);
-    }
+        exit_msg(ptr);
     return (ptr);   
 }
