@@ -6,5 +6,6 @@ int main(int argc, char **argv)
     
     double_p = check_file_args(argc, argv);
     check_infos_in(double_p);
+    printf("File is good !\n");
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:58:23 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/20 13:27:11 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:13:14 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,6 @@ int     check_range(char *string);
 int     check_ceil_floor(char *string);
 int     ft_strncmp(char *s1, char *s2, int n);
 int     is_good_num(char *string, int *i, int option);
+int     texture_check(char *string);
+int     which_texture(char *string);
 #endif
