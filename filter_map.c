@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:34:28 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/05/20 17:43:56 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/05/20 18:06:37 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -463,7 +463,7 @@ void check_up_down(char **map)
    check_body_lines(map);
    check_first_last_line(map);
    count_check_elements(map);
-   // element_body_line_check(map);
+   element_body_line_check(map);
 }
 
 char  *observer_checker_map(char **map)
