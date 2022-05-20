@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:34:28 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/05/20 11:53:33 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/05/20 17:43:56 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,6 +250,206 @@ void check_for_empty_line(char **map)
    }
 }
 
+void count_check_elements(char **map)
+{
+   int y = 0;
+   int x = 0;
+   int count_elm_n = 0;
+   int count_elm_s = 0;
+   int count_elm_w = 0;
+   int count_elm_e = 0;
+   y++;
+   while (map[y] && y < count_line_for_map(map) - 1)
+   {
+      x = 0;
+      while(map[y][x])
+      {
+         if (map[y][x] == 'N')
+            count_elm_n++;
+         if(map[y][x] == 'S')
+            count_elm_s++;
+         if(map[y][x] == 'W')
+            count_elm_w++;
+         if(map[y][x] == 'E')
+            count_elm_e++;
+        x++;
+      }
+      y++;
+   }
+   if (count_elm_n > 0)
+   {
+      if (count_elm_s == 0 && count_elm_e == 0 && count_elm_w == 0)
+      {
+      if (count_elm_n != 1)
+      {
+         write(2,"you have past the number of n's\n",32);
+         exit(1);
+      }
+      }
+      else
+      {
+      write(2,"you have used other elements beside your main element\n",54);
+      exit(1);
+      }
+   }
+   //---------------------------------------------------------------------------------------
+   else if (count_elm_s > 0)
+   {
+      if (count_elm_n == 0 && count_elm_e == 0 && count_elm_w == 0)
+      {
+      if (count_elm_s != 1)
+      {
+         write(2,"you have past the number of s's\n",32);
+         exit(1);
+      }
+      }
+      else
+      {
+      write(2,"you have used other elements beside your main element\n",54);
+      exit(1);
+      }
+   }
+   //----------------------------------------------------------------------------------------
+   else if (count_elm_w > 0)
+   {
+      if (count_elm_n == 0 && count_elm_e == 0 && count_elm_s == 0)
+      {
+      if (count_elm_w != 1)
+      {
+         write(2,"you have past the number of w's\n",32);
+         exit(1);
+      }
+      }
+      else
+      {
+      write(2,"you have used other elements beside your main element\n",54);
+      exit(1);
+      }
+   }
+   //-----------------------------------------------------------------------------------------
+   else if (count_elm_e > 0)
+   {
+      if (count_elm_n == 0 && count_elm_s == 0 && count_elm_w == 0)
+      {
+      if (count_elm_e != 1)
+      {
+         write(2,"you have past the number of e's\n",32);
+         exit(1);
+      }
+      }
+      else
+      {
+      write(2,"you have used other elements beside your main element\n",54);
+      exit(1);
+      }
+   }
+}
+
+void check_right_side(char **map)
+{
+   int y = 0;
+    int x = 0;
+    while(map[y])
+    {
+       x = 0;
+       while(map[y][x])
+       {
+          if(map[y][x + 1] == '\0' && map[y][x - 1] != '1')
+          {
+                write(2,"map not closed from right side\n",31);
+                exit(1);
+          }
+          x++;
+       }
+       y++;
+    }
+}
+
+void check_left_side(char **map)
+{
+   int y = 0;
+    int c = 0;
+    while(map[y])
+    {
+       c = 0;
+       while(map[y][c] == ' ')
+        c++;
+        if (map[y][c] != '1')
+        {
+            write(2,"map not closed from left side\n",31);
+            exit(1);
+        }
+        y++;
+    }
+}
+
+void check_sides(char **map)
+{
+    check_right_side(map);
+    check_left_side(map);
+}
+
+void check_first_last_line(char **map)
+{
+   int y = 0;
+   int x = 0;
+   while(map[y])
+   {
+      x = 0;
+      if(y == 0 || y == count_line_for_map(map) - 1)
+      {
+         while(map[y][x])
+         {
+            if(map[y][x] == ' ' || map[y][x] == '1')
+            {
+            }
+            if (map[y][x] != '1' && map[y][x] != ' ' && map[y][x] != '\n')
+            {
+               write(2,"first line || last line has elements not 1 or space\n",52);
+               exit(1);
+            }
+            x++;
+         }
+      }
+      y++;
+   }
+}
+
+void element_body_line_check(char **map)
+{
+   int y = 0;
+   int x = 0;
+   while(map[y])
+   {
+      x = 0;
+      if(y != 0 || y != count_line_for_map(map) - 1)
+      {
+         while(map[y][x])
+         {
+            if(map[y][x] == '0' || map[y][x] == '1' 
+            || map[y][x] == 'N' 
+            || map[y][x] == 'W' 
+            || map[y][x] == 'S' 
+            || map[y][x] == 'E' || map[y][x] == ' ')
+            {
+            }
+            if (map[y][x] != '1' && map[y][x] != ' ' && map[y][x] != '\n' 
+            &&  map[y][x] != 'N'
+            &&  map[y][x] != 'E'
+            &&  map[y][x] != 'S'
+            &&  map[y][x] != '0'
+            &&  map[y][x] != 'W')
+            {
+               write(2,"one of your body lines has an unrecognisable element\n",51);
+               exit(1);
+            }
+            x++;
+         }
+      }
+      y++;
+   }
+}
+
 void check_up_down(char **map)
 {
    int y = 0;
@@ -259,8 +459,11 @@ void check_up_down(char **map)
       check_line_zero_validity(map, y);
       y++;
    }
+   check_sides(map);
    check_body_lines(map);
-   // check_for_empty_line(map);
+   check_first_last_line(map);
+   count_check_elements(map);
+   // element_body_line_check(map);
 }
 
 char  *observer_checker_map(char **map)
