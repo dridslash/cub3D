@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 15:46:42 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/19 19:09:10 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/21 12:56:54 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ char	*ft_strdup(char *string)
 		compteur++;
 	return_string = malloc(sizeof(char) * (compteur + 1));
 	if (!return_string)
-		return (NULL);
+	{
+		printf("Error\nMalloc Fail.\n");
+		exit(EXIT_FAILURE);
+	}
 	compteur = 0;
 	while (string[compteur] != '\0')
 	{
@@ -75,7 +78,10 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (get_before_nl(s2, 0));
 	return_string = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!return_string)
-		return (NULL);
+	{
+		printf("Error\nMalloc Fail.\n");
+		exit(EXIT_FAILURE);
+	}
 	compteur1 = -1;
 	while (s1[++compteur1] != '\0')
 		return_string[compteur1] = s1[compteur1];
@@ -97,7 +103,10 @@ char	*get_before_nl(char *buffer, int option)
 	compteur = ft_strlen(buffer);
 	return_string = malloc(sizeof(char) * (compteur + 1));
 	if (!return_string)
-		return (NULL);
+	{
+		printf("Error\nMalloc Fail.\n");
+		exit(EXIT_FAILURE);
+	}
 	compteur = 0;
 	while (buffer[compteur] != '\n' && buffer[compteur] != '\0')
 	{

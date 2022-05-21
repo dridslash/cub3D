@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:34:11 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/19 19:11:53 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/21 12:53:05 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ char **push_st(char **double_p, char *to_put_in)
     if (double_p == NULL)
     {
         ret = malloc(sizeof(char *) * 2);
+        if (!ret)
+        {
+            printf("Error\nMalloc Fail.\n");
+            exit(EXIT_FAILURE);
+        }
         ret[0] = ft_strdup(to_put_in);
         ret[1] = NULL;
         return (ret);
@@ -28,6 +33,11 @@ char **push_st(char **double_p, char *to_put_in)
     while (double_p[i] != NULL)
         i++;
     ret = malloc(sizeof(char *) * (i + 2));
+    if (!ret)
+    {
+        printf("Error\nMalloc Fail.\n");
+        exit(EXIT_FAILURE);
+    }
     i = 0;
     while (double_p[i] != NULL)
     {

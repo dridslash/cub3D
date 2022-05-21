@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:58:23 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/20 19:37:42 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/21 12:45:28 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ typedef struct map_check
 }t_mapCheck;
 
 //File handling
+void    give_texture_file(t_info *infos, char *string);
+void    give_infos(t_info *infos, char **file);
+void    give_rgb(char *string, t_info *infos);
 void    exit_msg(char **s);
 void    check_struct(t_mapCheck *info, char **s);
 void    init_info_check(t_mapCheck *info);
@@ -53,6 +56,7 @@ char    **check_file_args(int argc, char **argv);
 char    **file_to_2darr(char *file);
 char    **push_st(char **double_p, char *to_put_in);
 char    **duplicate_double_p(char **file, int i);
+char    *remove_nl(char *s);
 int     ft_lenp(char **p);
 int     check_range(char *string);
 int     check_ceil_floor(char *string, char **s);
@@ -61,4 +65,7 @@ int     is_good_num(char *string, int *i, int option, char **s);
 int     texture_check(char *string, char **s);
 int     which_texture(char *string);
 int     is_1(t_mapCheck *info);
+int     is_ceiling_floor(char *string);
+int     m_atoi(char *string, int *i);
+int     is_texture(char *string);
 #endif
