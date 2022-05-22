@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 13:20:01 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/21 12:51:12 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:22:04 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ char **duplicate_double_p(char **file, int i)
     int     j;
 
     j = 0;
+	while (file[i][0] == '\n')
+		i++;
     ret = malloc(sizeof(char *) * (ft_lenp(&file[i]) + 1));
     if (!ret)
     {
