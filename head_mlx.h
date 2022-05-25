@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 09:30:11 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/05/17 10:44:53 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/05/24 14:16:02 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 #include <stdlib.h>
 # include <unistd.h>
 #include <fcntl.h>
+#include <math.h>
 
+#define PI 3.1415926535
+#define RD 0.1
 typedef struct game_strcut
 {
     void *mlx_in;
@@ -34,6 +37,12 @@ typedef struct game_strcut
     void   *player_obj;
     int     screen_width;
     int     screen_height;
+    float     p_x;
+    float     p_y;
+    float     dir_x;
+    float     dir_y;
+    float     rot_a;
+    char **map;
     
 }t_game;
 
@@ -51,5 +60,8 @@ char	*ft_strdup(const char *src);
 size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
 int 	ff_strlen(char *s);
 void appley_assets(t_game *game_obj);
+int simple_move(int key, t_game *game_obj);
+void appley_metrics(t_game *game_object_main, int argc , char **argv);
+void re_render(t_game *game_object_main);
 
 #endif

@@ -6,21 +6,15 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 09:30:50 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/05/17 15:41:47 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/05/25 10:40:54 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head_mlx.h"
 
-int close_window(int key , t_game *game_obj)
+int encod_to_rgb(int r , int g , int b)
 {
-   (void)game_obj;
-   if (key == 53)
-   {
-    printf("window exited\n");
-    exit(1);
-   }
-   return 0;
+   return (r << 16 | g << 8 | b);
 }
 
 int count_lines(int argc , char **argv)
@@ -85,24 +79,64 @@ char **get_map(int argc , char **argv)
    return (NULL);
 }
 
-void appley_metrics(t_game *game_object_main, int argc , char **argv, char **map)
+void appley_metrics(t_game *game_object_main, int argc , char **argv)
 {
+   // (void)argc;
+   // (void)argv;
    int x = 0;
    int y = 0;
-   (void)argc;
-   (void)argv;
+   game_object_main->map = get_map(argc, argv);
    game_object_main->mlx_in = mlx_init();
-   game_object_main->screen_width = get_width(map);
-   game_object_main->screen_height = get_height(map);
+   game_object_main->screen_width = get_width(game_object_main->map);
+   game_object_main->screen_height = get_height(game_object_main->map);
    game_object_main->mlx_window = mlx_new_window(game_object_main->mlx_in, game_object_main->screen_width * 32,
       game_object_main->screen_height * 32, "training");
    appley_assets(game_object_main);
-   while(map[y])
+   while(game_object_main->map[y])
    {
          x = 0;
-      while(map[y][x])
+      while(game_object_main->map[y][x])
       {
-         if (map[y][x] == '1')
+         if (game_object_main->map[y][x] == '1')
+         {
+            mlx_put_image_to_window(game_object_main->mlx_in, game_object_main->mlx_window,game_object_main->wall_obj,x * 32, y * 32);
+         }
+         // if (game_object_main->map[y][x] == '0')
+         // {
+         //    mlx_put_image_to_window(game_object_main->mlx_in, game_object_main->mlx_window,game_object_main->black_ground_obj_img,x * 32, y * 32);
+         // }
+         if (game_object_main->map[y][x] == 'P')
+         {
+            mlx_put_image_to_window(game_object_main->mlx_in, game_object_main->mlx_window,game_object_main->player_obj,x * 32, y * 32);
+            game_object_main->p_x = x * 32;
+            game_object_main->p_y = y * 32;
+            mlx_pixel_put(game_object_main->mlx_in,game_object_main->mlx_window,(game_object_main->p_x / 2), (game_object_main->p_x / 2),
+      encod_to_rgb(242, 236, 51));
+            printf("before moving : pl ps x %f\n",game_object_main->p_y);
+            printf("before moving : pl ps y %f\n",game_object_main->p_y);
+         }
+         x++;
+      }
+      y++;
+   }
+   mlx_hook(game_object_main->mlx_window, 2, 1L<<0, simple_move,game_object_main);
+   mlx_loop(game_object_main->mlx_in);
+}
+
+void re_render(t_game *game_object_main)
+{
+   int x = 0;
+   int y = 0;
+   while(game_object_main->map[y])
+   {
+         x = 0;
+      while(game_object_main->map[y][x])
+      {
+         if (game_object_main->map[y][x] == '1')
+         {
+            mlx_put_image_to_window(game_object_main->mlx_in, game_object_main->mlx_window,game_object_main->wall_obj,x * 32, y * 32);
+         }
+         if (game_object_main->map[y][x] == '0')
          {
             mlx_put_image_to_window(game_object_main->mlx_in, game_object_main->mlx_window,game_object_main->black_ground_obj_img,x * 32, y * 32);
          }
@@ -110,13 +144,13 @@ void appley_metrics(t_game *game_object_main, int argc , char **argv, char **map
       }
       y++;
    }
-   mlx_hook(game_object_main->mlx_window, 2, 1L<<0, close_window,&game_object_main);
-   mlx_loop(game_object_main->mlx_in);
 }
+
 int main(int argc, char **argv)
 {
-   char **map = get_map(argc, argv);
    t_game *game_object_main;
    game_object_main = malloc(sizeof(t_game));
-   appley_metrics(game_object_main, argc, argv, map);
+   game_object_main->dir_x = 1;
+   game_object_main->dir_y = 0;
+   appley_metrics(game_object_main, argc, argv);
 }
