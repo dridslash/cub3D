@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/25 19:57:49 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/26 18:18:25 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef struct game_struct
     float   y_player;
     float   angle;
     char    **map;
+    void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 } t_game;
 int is_wall_for_y(long int x, long int y, t_game *info);
 int is_wall_for_x(long int x, long int y, t_game *info);

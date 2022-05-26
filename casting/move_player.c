@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:42:50 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/25 20:02:47 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/26 21:39:40 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int move_it(int key, t_game *info)
         put_map(info);
         if (key == 0)
         {
-            info->angle -= 0.1;
+            info->angle -= 0.20;
             if (info->angle <= 0)
                 info->angle += 2 * PI;
         }
@@ -31,7 +31,7 @@ int move_it(int key, t_game *info)
         }
         if (key == 2)
         {
-            info->angle += 0.1;
+            info->angle += 0.20;
             if (info->angle >= PI * 2)
                 info->angle = 0;
         }
@@ -40,7 +40,7 @@ int move_it(int key, t_game *info)
             info->x_player += cos(info->angle) * 5;
             info->y_player += sin(info->angle) * 5;       
         }
-        //put_grid(info);
+        // put_grid(info);
         put_rays(info);
         //put_direction(info);
     }
