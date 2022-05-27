@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:20:26 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/26 21:50:37 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/27 12:35:23 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void cast(int height, t_game *info, int x)
     }
     x++;
      
-    while (x % 6 != 0)
+    while (x % 8 != 0)
     {
     tmp = (480 - height) /2 ;
     i = 0;
@@ -197,7 +197,7 @@ void put_direction(t_game *infos)
         tmp_y += sin(infos->angle) * 0.01;
     }
         distance = sqrt(pow(tmp_x - infos->x_player, 2) + pow(infos->y_player - tmp_y, 2));
-        height =  30 * 480 / distance;
+        height =  60 * 480 / distance;
         if (height > 480)
             height = 480;
         printf("Distance is %f\n", distance);
@@ -213,7 +213,7 @@ void put_rays(t_game *info)
     tmp_angle = info->angle;
     int x_prime = 480;
     
-   int height;
+   float height;
     tmp_angle = info->angle;
     /*while (tmp_angle >= info->angle - 0.5235988)
     {
@@ -267,6 +267,7 @@ while (tmp_angle <= info->angle + 0.5235988)
     }*/
     tmp_angle = info->angle - 0.5235988;
     x_prime = 0;
+    float z = 0;
     while (tmp_angle <= info->angle + 0.5235988)
     {
         tmp_x = info->x_player;
@@ -286,14 +287,14 @@ while (tmp_angle <= info->angle + 0.5235988)
             tmp_y += sin(tmp_angle) * 0.6;
         }
         distance = sqrt(pow(tmp_x - info->x_player, 2) + pow(info->y_player - tmp_y, 2));
-
-        double example;
-        example = (30 * 420) / distance;
-        height = (30 * 420) / distance;
+        //if (z == 0)
+        z = distance * cos(tmp_angle - info->angle);
+        printf("z is :%f\n",z);
+        height = (60 * 420) / fabs(z);
         if (height > 480)
             height = 480;
         cast(height, info, x_prime);
-        x_prime += 6;
+        x_prime += 8;
         tmp_angle += 0.0174533;
     }
 }
@@ -318,11 +319,11 @@ int main(int argc, char **argv)
     while (++i < 13)
         game.map[i] = malloc(sizeof(char) * 16);
 	game.map[0] = ft_strdup("1111111111111111");
-	game.map[1] = ft_strdup("1000100000110001");
-	game.map[2] = ft_strdup("1000100000000001");
-	game.map[3] = ft_strdup("10W0100000001101");
-	game.map[4] = ft_strdup("1000001000000011");
-	game.map[5] = ft_strdup("1010001001100001");
+	game.map[1] = ft_strdup("1001000000000001");
+	game.map[2] = ft_strdup("1000000000000001");
+	game.map[3] = ft_strdup("10E0000000011001");
+	game.map[4] = ft_strdup("1000000000011001");
+	game.map[5] = ft_strdup("1000000000000001");
 	game.map[6] = ft_strdup("1000000000000001");
 	game.map[7] = ft_strdup("1111111111111111");
 	game.map[9] = NULL;
