@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/26 18:18:25 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/27 21:03:17 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #define PI 3.141592635
 #include <math.h>
 #include <mlx.h>
+
 typedef struct game_struct
 {
     void    *mlx_ptr;

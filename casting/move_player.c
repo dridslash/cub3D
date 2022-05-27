@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:42:50 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/26 21:39:40 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:46:24 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int move_it(int key, t_game *info)
             info->x_player += cos(info->angle) * 5;
             info->y_player += sin(info->angle) * 5;       
         }
-        // put_grid(info);
         put_rays(info);
-        //put_direction(info);
     }
     return (0);
 }
