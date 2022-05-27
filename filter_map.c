@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:34:28 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/05/21 16:35:51 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/05/27 16:07:38 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,6 +361,9 @@ void check_right_side(char **map)
        {
           if(map[y][x + 1] == '\0' && map[y][x - 1] != '1' && get_lenght_based_chr(map[y]) > 1)
           {
+             if (map[y][x - 1] == ' ')
+             {}
+             else
                 write(2,"map not closed from right side\n",31);
                 exit(1);
           }

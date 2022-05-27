@@ -4,12 +4,12 @@ CFLAGS =  -Wall -Werror -Wextra
 
 mlxFlags = -lmlx -framework OpenGL -framework AppKit
 
-SRCS = main.c\
+SRCS = filter_map.c\
 		get_next_line.c\
 		get_next_line_utils.c\
 		ff_strlen.c\
-		appley_assets.c\
-		simple_move.c\
+		#appley_assets.c\
+		#simple_move.c\
 
 
 NAME = cb3
