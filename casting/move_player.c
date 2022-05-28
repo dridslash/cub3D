@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:42:50 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/28 12:56:33 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/28 16:00:02 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int move_it(int key, t_game *info)
     if (key == 0 || key == 1 || key == 2 || key == 13)
     {
         mlx_clear_window(info->mlx_ptr, info->win_ptr);
+        mlx_destroy_image(info->mlx_ptr, info->img);
+        info->img = mlx_new_image(info->mlx_ptr, 960, 480);
         put_map(info);
         if (key == 0)
         {

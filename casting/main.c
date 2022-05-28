@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:20:26 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/28 13:25:56 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/28 14:49:28y oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ void put_map(t_game *info)
         //  Remove comments if you want to test the map with rays
            if (info->map[i][j] == '1')
            {
-                img = mlx_xpm_file_to_image(info->mlx_ptr, "wh.xpm", &tmp, &tmp);
-                mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, img, tmp_x, tmp_y);
+            img = mlx_xpm_file_to_image(info->mlx_ptr, "wh.xpm", &tmp, &tmp);
+            mlx_put_image_to_window(info->mlx_ptr, info->img, img, tmp_x, tmp_y);
            }
-            if (info->map[i][j] == 'N' || info->map[i][j] == 'S'
+            else if (info->map[i][j] == 'N' || info->map[i][j] == 'S'
                 || info->map[i][j] == 'E' || info->map[i][j] == 'W')
             {
-                give_angle(info->map[i][j], info);
+               give_angle(info->map[i][j], info);
                info->map[i][j] = '0';
                info->x_player = tmp_x + 30;
                info->y_player = tmp_y + 30;
@@ -83,109 +83,27 @@ void put_map(t_game *info)
 void cast(int height, t_game *info, int x)
 {
     int i;
-    int tmp;
+    int floor_and_ceiling_distance;
     int tmp_x;
 
-    tmp = (480 - height) / 2;
+    floor_and_ceiling_distance = (480 - height) /2 ;
     i = 0;
-    while (i <= tmp)
+    while (i <=  floor_and_ceiling_distance)
     {
-        // mlx_pixel_put(info->mlx_ptr, info->win_ptr, x, i, 0xFFFFFF);
         my_mlx_pixel_put(info,x,i,encod_to_rgb(255, 255, 255));
         i++;
     }
-     while (i < tmp + height)
+     while (i <  floor_and_ceiling_distance + height)
      {
-        // mlx_pixel_put(info->mlx_ptr, info->win_ptr, x, i, 0xF70404);
         my_mlx_pixel_put(info,x,i,encod_to_rgb(247, 4, 4));
         i++;
      }
-    while (i <= 480)
+    while (i < 480)
     {
-    //    mlx_pixel_put(info->mlx_ptr, info->win_ptr, x, i, 0xA0A0A0);
-       my_mlx_pixel_put(info,x,i,encod_to_rgb(160, 160, 160)); 
+        my_mlx_pixel_put(info,x,i,encod_to_rgb(160, 160, 160)); 
         i++;
     }
     x++;
-     
-    while (x % 16 != 0)
-    {
-    tmp = (480 - height) /2 ;
-    i = 0;
-    while (i <= tmp)
-    {
-        // mlx_pixel_put(info->mlx_ptr, info->win_ptr, x, i, 0xFFFFFF);
-        my_mlx_pixel_put(info,x,i,encod_to_rgb(255, 255, 255));
-        i++;
-    }
-     while (i < tmp + height)
-     {
-        // mlx_pixel_put(info->mlx_ptr, info->win_ptr, x, i, 0xF70404);
-        my_mlx_pixel_put(info,x,i,encod_to_rgb(247, 4, 4));
-        i++;
-     }
-    while (i <= 480)
-    {
-    //    mlx_pixel_put(info->mlx_ptr, info->win_ptr, x, i, 0xA0A0A0); 
-       my_mlx_pixel_put(info,x,i,encod_to_rgb(160, 160, 160)); 
-        i++;
-    }
-    x++;
-    }
-    mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img, 0, 0);
-}
-
-void put_grid(t_game *info)
-{
-    int i, j, tmp_x, tmp_y = 0, t;
-
-    i = 0;
-    while (info->map[i] != NULL)
-    {
-        j = 0;
-        tmp_x = 0;
-        while (info->map[i][j] != '\0')
-        {
-           t = -1;
-           while (++t < 720)
-                mlx_pixel_put(info->mlx_ptr, info->win_ptr, tmp_x, t, 0x808080);
-            j++;
-            tmp_x += 60;
-        }
-        t = -1;
-        while (++t < 960)
-            mlx_pixel_put(info->mlx_ptr, info->win_ptr, t, tmp_y, 0x808080);
-        i++;
-        tmp_y += 60;
-    }
-}
-
-//Function that casts just one ray to visualize the rotation
-void put_direction(t_game *infos)
-{
-    int i;
-    float tmp_x, tmp_y;
-        float distance = 0;
-    tmp_x = infos->x_player;
-    tmp_y = infos->y_player;
-    int height = 0;
-    i = -1;
-    while (1)
-    {
-        if (lroundf(tmp_x) % 60 == 0 && is_wall_for_x(lroundf(tmp_x), lroundf(tmp_y), infos))
-            break;
-        else if (lroundf(tmp_y) % 60 == 0 && is_wall_for_y(lroundf(tmp_x), lroundf(tmp_y), infos))
-            break;
-        //mlx_pixel_put(infos->mlx_ptr, infos->win_ptr, tmp_x, tmp_y, 0xFF0000);
-        tmp_x += cos(infos->angle) * 0.01;
-        tmp_y += sin(infos->angle) * 0.01;
-    }
-        distance = sqrt(pow(tmp_x - infos->x_player, 2) + pow(infos->y_player - tmp_y, 2));
-        height =  60 * 480 / distance;
-        if (height > 480)
-            height = 480;
-        printf("Distance is %f\n", distance);
-        printf("Distance of the wall %d\n", height);
 }
 
 //Function that cast the rays and stop them if they touch a wall
@@ -219,25 +137,29 @@ void put_rays(t_game *info)
             else if (lroundf(tmp_y) % 60 == 0 && is_wall_for_y(lroundf(tmp_x), lroundf(tmp_y), info))
                 break;
             //If you want to test the map with the rays remove these 2 comments
-            mlx_pixel_put(info->mlx_ptr, info->win_ptr, tmp_x, tmp_y, 0xFF0000);
+            //mlx_pixel_put(info->mlx_ptr, info->win_ptr, tmp_x, tmp_y, 0xFF0000);
             // my_mlx_pixel_put(info,tmp_x,tmp_y,encod_to_rgb(255, 0, 0)); 
-                
+
             tmp_x += cos(ray_angle) * 0.5;
             tmp_y += sin(ray_angle) * 0.5;
         }
         nb_rays++;
         distance = sqrt(pow(tmp_x - info->x_player, 2) + pow(info->y_player - tmp_y, 2));
-        // z = distance * cos(ray_angle - info->angle);
+        z = distance * cos(ray_angle - info->angle);
         //Wall height in the final map
-        // height = (60 * 420) / fabs(z);
-        // if (height > 480)
-        //     height = 480;
-        // if (nb_rays <= 60)
-        //     cast(height, info, x_prime);
-        // x_prime += 16;
-        ray_angle += 0.0174533;
+        height = ((40 * 420) / fabs(z));
+        if (height > 480)
+            height = 480;
+        if (nb_rays <= 960)
+            cast(height, info, x_prime);
+        x_prime += 1;
+        // ray_angle += 0.0174533;
+        ray_angle += 0.00109083333;
+
     }
-        printf("%d\n", nb_rays);
+    mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img, 0, 0);
+        // printf("Nb rays = %d\n", nb_rays);
+
 }
 int main(int argc, char **argv)
 {
@@ -254,9 +176,9 @@ int main(int argc, char **argv)
         game.map[i] = malloc(sizeof(char) * 16);
 	game.map[0] = ft_strdup("1111111111111111");
 	game.map[1] = ft_strdup("1001000000000001");
-	game.map[2] = ft_strdup("1000000100010001");
+	game.map[2] = ft_strdup("1011110100010001");
 	game.map[3] = ft_strdup("10E0000000011001");
-	game.map[4] = ft_strdup("1000000000011001");
+	game.map[4] = ft_strdup("1011110000011001");
 	game.map[5] = ft_strdup("1010100000000001");
 	game.map[6] = ft_strdup("1000010000001001");
 	game.map[7] = ft_strdup("1111111111111111");
