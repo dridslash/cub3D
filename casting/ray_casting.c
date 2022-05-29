@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/29 17:59:56 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/05/29 21:14:34 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void cast(int height, t_game *info, int x)
 	}
      while (y_in_axis < floor_and_ceiling_distance + height)
      {
-        my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(247, 4, 4));
+        my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(0, 255, 0));
+        // my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(247, 4, 4));
         y_in_axis++;
      }
     while (y_in_axis < 700)
