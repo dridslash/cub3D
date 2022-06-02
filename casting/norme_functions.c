@@ -6,7 +6,7 @@
 /*   By: oessayeg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 14:02:10 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 14:04:18 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/02 19:15:08 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "casting.h"
@@ -23,4 +23,22 @@ void	norme_function1(t_game *info, int tmp_x, int tmp_y)
 	info->y_player = tmp_y + 30;
 	info->x_wall = info->x_player + (cos(info->angle) * 40);
 	info->y_wall = info->y_player + (sin(info->angle) * 40);
+}
+
+void	norme_function2(t_game *info)
+{
+	info->y_player -= sin(info->angle) * 10;
+	info->x_player -= cos(info->angle) * 10;
+}
+
+void	norme_function3(t_game *info, float angle)
+{
+	info->y_player += sin(angle) * 10;
+	info->x_player += cos(angle) * 10;
+}
+
+void	norme_function4(float *tmp_x, float *tmp_y, t_game *info)
+{
+	(*tmp_x) = info->x_player;
+	(*tmp_y) = info->y_player;
 }
