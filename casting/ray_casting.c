@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 13:53:27 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/02 14:59:25 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ void cast(int height, t_game *info, int x, float distance)
     int  wall;
     int window_height = 700;
 
-    wall_height = ((window_height / distance) * WALL_SCALE);
+    //wall_height = ((window_height / distance) * WALL_SCALE);
 	floor_and_ceiling_distance = (window_height - height ) / 2;
 	y_in_axis = 0;
     // top_y = (window_height - wall_height) / 2;
     // wall_portion = top_y + wall_height;
     info->addr_texture = mlx_get_data_addr(info->texture ,&info->bits_per_pixel_texture,&info->line_length_texture,&info->endian_texture);
     wall = floor_and_ceiling_distance + height;
-	while (y_in_axis <= floor_and_ceiling_distance)
+	while (y_in_axis < floor_and_ceiling_distance)
 	{
 		my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(135,206,250));
 		y_in_axis++;
 	}
-     while (y_in_axis < wall)
+     while (y_in_axis < wall )
      {
         //  printf("top_y : %d\n",y_in_axis);
         // color = load_color_from_texture(1.0 - (double)(wall_portion - y_in_axis) / (double)height ,info, height);
         // pixel_color = info->addr_texture  + (y_in_axis * 60 + x * (info->bits_per_pixel_texture / 8));
-        pixel_color = load_color_from_texture((1.0 - ((double)(wall - y_in_axis) / (double)wall_height)),info,height,x);
+        pixel_color = load_color_from_texture((1.0 - ((double)(wall - y_in_axis) / (double)height)),info,height,x);
        my_mlx_pixel_put(info,x,y_in_axis,*(int*)pixel_color);
         //   my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(163, 60, 52));
         // my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(247, 4, 4));
