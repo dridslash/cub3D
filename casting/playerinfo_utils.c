@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PlayerInfo_utils.c                                 :+:      :+:    :+:   */
+/*   playerinfo_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:05:32 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/29 19:44:29 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:45:03 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,19 @@ void	give_angle_of_player(char c, t_game *game)
 		game->angle = 3.141592;
 }
 
-void	init_vars(int *i1, int *i2)
+/*void	init_vars(int *i1, int *i2)
 {
 	(*i1) = 0;
 	(*i2) = 0;
 }
+
+void	norme_function1(t_game *info, int tmp_x, int tmp_y)
+{
+	info->x_player = tmp_x + 30;
+	info->y_player = tmp_y + 30;
+	info->x_wall = info->x_player + (cos(info->angle) * 40);
+	info->y_wall = info->y_player + (sin(info->angle) * 40);
+}*/
 
 void	get_player_pos_from_map(t_game *info)
 {
@@ -62,8 +70,7 @@ void	get_player_pos_from_map(t_game *info)
 			{
 				give_angle_of_player(info->map[i][j], info);
 				info->map[i][j] = '0';
-				info->x_player = tmp_x + 30;
-				info->y_player = tmp_y + 30;
+				norme_function1(info, tmp_x, tmp_y);
 			}
 			j++;
 			tmp_x += 60;

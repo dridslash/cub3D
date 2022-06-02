@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 17:42:50 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/29 21:06:49 by oessayeg         ###   ########.fr       */
+/*   Created: 2022/06/02 13:36:14 by oessayeg          #+#    #+#             */
+/*   Updated: 2022/06/02 13:55:30 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,13 @@
 void	update_coordinates_of_player(t_game *info, int key)
 {
 	if (key == 1)
-	{
-		info->x_player -= cos(info->angle) * 10;
-		info->y_player -= sin(info->angle) * 10;
-	}
+		down_button_check(info);
 	else if (key == 13)
-	{
-		info->x_player += cos(info->angle) * 10;
-		info->y_player += sin(info->angle) * 10;
-	}
+		up_button_check(info);
 	else if (key == 0)
-	{
-		info->x_player -= cos(info->angle + (M_PI / 2)) * 10;
-		info->y_player -= sin(info->angle + (M_PI / 2)) * 10;
-	}
+		left_button_check(info);
 	else if (key == 2)
-	{
-		info->x_player += cos(info->angle + (M_PI) / 2) * 10;
-		info->y_player += sin(info->angle + (M_PI) / 2) * 10;
-	}
+		right_button_check(info);
 }
 
 int	move_the_player(int key, t_game *info)
@@ -59,8 +47,6 @@ int	move_the_player(int key, t_game *info)
 		else
 			update_coordinates_of_player(info, key);
 		put_rays(info);
-		mlx_pixel_put(info->mlx_ptr, info->win_ptr,
-			info->x_player, info->y_player, 0xFF0000);
 	}
 	return (0);
 }
