@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 14:59:25 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/02 17:35:42 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void cast(int height, t_game *info, int x, float distance)
 		my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(135,206,250));
 		y_in_axis++;
 	}
-     while (y_in_axis < wall )
+     while (y_in_axis < wall)
      {
         //  printf("top_y : %d\n",y_in_axis);
         // color = load_color_from_texture(1.0 - (double)(wall_portion - y_in_axis) / (double)height ,info, height);

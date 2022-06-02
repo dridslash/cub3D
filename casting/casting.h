@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 14:54:15 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/02 16:18:57 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "../parse_part1/file_parse.h"
 #define WALL_SIDE_H 1
 #define WALL_SIDE_V 2
-#define WALL_SCALE 100.0
+#define WALL_SCALE 70.0
 
 typedef struct game_struct
 {
