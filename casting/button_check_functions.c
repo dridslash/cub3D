@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 13:42:27 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 19:36:54 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/02 21:18:15 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ void	up_button_check(t_game *info)
 {
 	if (check_moves(info, info->angle - 0.261799) == 1)
 	{
-		info->x_player += cos(info->angle) * 10;
-		info->y_player += sin(info->angle) * 10;
+		info->x_player += cos(info->angle) * 15;
+		info->y_player += sin(info->angle) * 15;
 	}
 	else if (check_moves(info, info->angle - 0.261799) == -1)
 	{
 		if (info->angle >= 0 && info->angle <= M_PI
 			&& check_moves(info, 1.308991) != 0)
-			info->y_player += sin(info->angle) * 10;
+			info->y_player += sin(info->angle) * 15;
 		else if (info->angle >= M_PI
 			&& check_moves(info, 4.7123889 - 0.261799) != 0)
-			info->y_player += sin(info->angle) * 10;
+			info->y_player += sin(info->angle) * 15;
 	}
 	else
 	{
 		if (info->angle <= 4.7123889 && info->angle >= M_PI / 2
 			&& check_moves(info, (M_PI - 0.261799)) != -1)
-			info->x_player += cos(info->angle) * 10;
+			info->x_player += cos(info->angle) * 15;
 		else if ((info->angle >= 4.7123889 || info->angle <= M_PI / 2)
 			&& check_moves(info, -0.261799) != -1)
-			info->x_player += cos(info->angle) * 10;
+			info->x_player += cos(info->angle) * 15;
 	}
 }
 
@@ -52,19 +52,19 @@ void	down_button_check(t_game *info)
 	{
 		if (back_angle >= 0 && back_angle <= M_PI
 			&& check_moves(info, 1.57079 - 0.261799) != 0)
-			info->y_player -= sin(info->angle) * 10;
+			info->y_player -= sin(info->angle) * 15;
 		else if (back_angle >= M_PI
 			&& check_moves(info, 4.7123889 - 0.261799) != 0)
-			info->y_player -= sin(info->angle) * 10;
+			info->y_player -= sin(info->angle) * 15;
 	}
 	else
 	{
 		if (back_angle <= 4.7123889 && back_angle >= M_PI / 2
 			&& check_moves(info, (M_PI - 0.261799)) != -1)
-			info->x_player -= cos(info->angle) * 10;
+			info->x_player -= cos(info->angle) * 15;
 		else if ((back_angle > 4.7123889 || back_angle < M_PI / 2)
 			&& check_moves(info, -0.261799) != -1)
-			info->x_player -= cos(info->angle) * 10;
+			info->x_player -= cos(info->angle) * 15;
 	}
 }
 
@@ -81,19 +81,19 @@ void	right_button_check(t_game *info)
 	{
 		if (right_angle >= 0 && right_angle <= M_PI
 			&& check_moves(info, 1.57079 - 0.261799) != 0)
-			info->y_player += sin(right_angle) * 10;
+			info->y_player += sin(right_angle) * 15;
 		else if (right_angle >= M_PI
 			&& check_moves(info, 4.7123889 - 0.261799) != 0)
-			info->y_player += sin(right_angle) * 10;
+			info->y_player += sin(right_angle) * 15;
 	}
 	else
 	{
 		if (right_angle <= 4.7123889 && right_angle >= M_PI / 2
 			&& check_moves(info, (M_PI - 0.261799)) != -1)
-			info->x_player += cos(right_angle) * 10;
+			info->x_player += cos(right_angle) * 15;
 		else if ((right_angle > 4.7123889 || right_angle < M_PI / 2)
 			&& check_moves(info, -0.261799) != -1)
-			info->x_player += cos(right_angle) * 10;
+			info->x_player += cos(right_angle) * 15;
 	}
 }
 
@@ -108,19 +108,19 @@ void	left_button_check(t_game *info)
 	{
 		if (left_angle >= 0 && left_angle <= M_PI
 			&& check_moves(info, 1.57079 - 0.261799) != 0)
-			info->y_player += sin(left_angle) * 10;
+			info->y_player += sin(left_angle) * 15;
 		else if (left_angle >= M_PI
 			&& check_moves(info, 4.7123889 - 0.261799) != 0)
-			info->y_player += sin(left_angle) * 10;
+			info->y_player += sin(left_angle) * 15;
 	}
 	else
 	{
 		if (left_angle <= 4.7123889 && left_angle >= M_PI / 2
 			&& check_moves(info, (M_PI - 0.261799)) != -1)
-			info->x_player += cos(left_angle) * 10;
+			info->x_player += cos(left_angle) * 15;
 		else if ((left_angle > 4.7123889 || left_angle < M_PI / 2)
 			&& check_moves(info, -0.261799) != -1)
-			info->x_player += cos(left_angle) * 10;
+			info->x_player += cos(left_angle) * 15;
 	}
 }
 
