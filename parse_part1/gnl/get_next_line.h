@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 15:45:14 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/21 12:57:42 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/03 11:04:07 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <limits.h>
 
 # include <stdio.h>
-#define BUFFER_SIZE 10000
+# define BUFFER_SIZE 10000
 
 int		check_nl(char *string);
 int		ft_strlen(char *string);
