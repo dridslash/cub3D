@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 19:19:53 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:03:42 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,27 @@ void	cast(int height, t_game *info, int x)
 {
 	int	y_in_axis;
 	int	floor_and_ceiling_distance;
+	int window_height = 700;
+	int  wall;
+	char *pixel_color;
 
-	floor_and_ceiling_distance = (700 - height) / 2;
+	floor_and_ceiling_distance = (window_height - height) / 2;
 	y_in_axis = 0;
+	wall = floor_and_ceiling_distance + height;
+	change_texture(info);
 	while (y_in_axis <= floor_and_ceiling_distance)
 	{
 		my_mlx_pixel_put(info, x, y_in_axis, encode_to_rgb(244, 255, 255));
 		y_in_axis++;
 	}
-	while (y_in_axis < floor_and_ceiling_distance + height)
+	while (y_in_axis < wall)
 	{
-		my_mlx_pixel_put(info, x, y_in_axis, encode_to_rgb(160, 82, 45));
+		pixel_color = load_color_from_texture((1.0 - ((double)(wall - y_in_axis) / (double)height)),info);
+       	my_mlx_pixel_put(info,x,y_in_axis,*(int*)pixel_color);
+		// my_mlx_pixel_put(info, x, y_in_axis, encode_to_rgb(160, 82, 45));
 		y_in_axis++;
 	}
-	while (y_in_axis < 700)
+	while (y_in_axis < window_height)
 	{
 		my_mlx_pixel_put(info, x, y_in_axis, encode_to_rgb(160, 160, 160));
 		y_in_axis++;
@@ -56,10 +63,18 @@ int	ray_touched_wall(t_game *info, float tmp_x, float tmp_y)
 		return (1);
 	else if (lroundf(tmp_x) % 60 == 0
 		&& check_wall_in_x_axis(lroundf(tmp_x), lroundf(tmp_y), info))
+		{
+			info->intersection_vertical = tmp_y;
+            info->side = WALL_SIDE_V;
 		return (1);
+		}
 	else if (lroundf(tmp_y) % 60 == 0
 		&& check_wall_in_y_axis(lroundf(tmp_x), lroundf(tmp_y), info))
+		{
+			info->intersection_horizontal = tmp_x;
+            info->side = WALL_SIDE_H;
 		return (1);
+		}
 	return (0);
 }
 //Cast the rays and stop them if they touch a wall

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_collision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:41:00 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 15:22:27 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:55:40 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	check_wall_in_x_axis(long int x, long int y, t_game *info)
 {
 	if (x >= info->x_player)
 	{
+		info->orientation = EAST;
 		while (y % 60 != 0)
 			y--;
 		if (info->map[y / 60][x / 60] == '1')
@@ -24,6 +25,7 @@ int	check_wall_in_x_axis(long int x, long int y, t_game *info)
 	}
 	else if (x <= info->x_player)
 	{
+		info->orientation = WEST;
 		x -= 60;
 		while (y % 60 != 0)
 			y--;
@@ -37,6 +39,7 @@ int	check_wall_in_y_axis(long int x, long int y, t_game *info)
 {
 	if (y <= info->y_player)
 	{
+		info->orientation = NORTH;
 		y -= 60;
 		while (x % 60 != 0)
 			x--;
@@ -45,6 +48,7 @@ int	check_wall_in_y_axis(long int x, long int y, t_game *info)
 	}
 	else if (y >= info->y_player)
 	{
+		info->orientation = SOUTH;
 		while (x % 60 != 0)
 			x--;
 		if (info->map[y / 60][x / 60] == '1')

@@ -1,4 +1,4 @@
 
 
 all :
-	gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit ../parse_part1/file_parse1.c ../parse_part1/gnl/get_next_line.c ../parse_part1/gnl/get_next_line_utils.c ../parse_part1/file_error_fcts1.c ../parse_part1/utils1.c ../parse_part1/file_error_fcts2.c main.c ../parse_part1/file_texture_check.c ../parse_part1/utils2.c ../parse_part1/info_fcts1.c move_player.c ray_collision.c playerinfo_utils.c ray_casting.c button_check_functions.c norme_functions.c ../parse_part1/norme_functions.c ../parse_part1/norme_functions_prime.c
+	gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit ../parse_part1/file_parse1.c ../parse_part1/gnl/get_next_line.c ../parse_part1/gnl/get_next_line_utils.c ../parse_part1/file_error_fcts1.c ../parse_part1/utils1.c ../parse_part1/file_error_fcts2.c main.c ../parse_part1/file_texture_check.c ../parse_part1/utils2.c ../parse_part1/info_fcts1.c move_player.c ray_collision.c playerinfo_utils.c ray_casting.c button_check_functions.c norme_functions.c ../parse_part1/norme_functions.c ../parse_part1/norme_functions_prime.c ../parse_part2/filter_map.c load_color_from_texture.c change_texture.c

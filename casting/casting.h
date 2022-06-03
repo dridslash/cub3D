@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   casting.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 19:16:39 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:00:38 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # include <math.h>
 # include <mlx.h>
 # include "../parse_part1/file_parse.h"
+#define WALL_SIDE_H 1
+#define WALL_SIDE_V 2
+#define WALL_SCALE 70.0
+#define EAST 1
+#define WEST 2
+#define NORTH 3
+#define SOUTH 4
 
 typedef struct game_struct
 {
@@ -31,10 +38,31 @@ typedef struct game_struct
 	char	**map;
 	char	*addr;
 	int		nb_rays;
+	int		x_prime;
+	int     side;
+	int     width_tex;
+    int     height_tex;
+    float   intersection_horizontal;
+    float   intersection_vertical;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		x_prime;
+//-----------------ORTIONTATION_TEXTURES-------------------------
+    char    *texture_file_name_north;
+	char    *texture_file_name_south;
+	char    *texture_file_name_east;
+	char    *texture_file_name_west;
+//--------------------APLLIED_TEXTURES------------------------
+    void    *texture_north;
+	void    *texture_south;
+	void    *texture_east;
+	void    *texture_west;
+//----------------------MLX_NEEDED_SPECS----------------------
+    char    *addr_texture;
+   	int     bits_per_pixel_texture;
+    int     line_length_texture;
+    int     endian_texture;
+	int		orientation;
 }	t_game;
 
 int		encode_to_rgb(int r, int g, int b);
@@ -68,4 +96,11 @@ void	norme_function1(t_game *info, int tmp_x, int tmp_y);
 void	norme_function2(t_game *info);
 void	norme_function3(t_game *info, float angle);
 void	norme_function4(float *tmp_x, float *tmp_y, t_game *info);
+
+//--------------------------__TEXTURE__FUNCTIONS__-------------------------
+
+char	*load_color_from_texture(double screen_y,t_game *info);
+int		change_texture(t_game *info);
+
+//--------------------------------------close-------------------------------
 #endif

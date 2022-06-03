@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 13:36:14 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/03 11:23:06 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:07:36 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	update_coordinates_of_player(t_game *info, int key)
 int	move_the_player(int key, t_game *info)
 {
 	if (key == 0 || key == 1 || key == 2 || key == 13
-		|| key == 123 || key == 124)
+		|| key == 123 || key == 124 || key == 53)
 	{
 		mlx_clear_window(info->mlx_ptr, info->win_ptr);
 		mlx_destroy_image(info->mlx_ptr, info->img);
@@ -44,6 +44,11 @@ int	move_the_player(int key, t_game *info)
 			if (info->angle > PI * 2)
 				info->angle = (info->angle - (PI * 2));
 		}
+		else if (key == 53)
+        {
+            mlx_destroy_window(info->mlx_ptr,info->win_ptr);
+            exit(0);
+        }
 		else
 			update_coordinates_of_player(info, key);
 		put_rays(info);
