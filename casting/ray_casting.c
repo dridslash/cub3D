@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 17:35:42 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/03 14:07:18 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void cast(int height, t_game *info, int x, float distance)
 	y_in_axis = 0;
     // top_y = (window_height - wall_height) / 2;
     // wall_portion = top_y + wall_height;
-    info->addr_texture = mlx_get_data_addr(info->texture ,&info->bits_per_pixel_texture,&info->line_length_texture,&info->endian_texture);
     wall = floor_and_ceiling_distance + height;
+    change_texture(info);
 	while (y_in_axis < floor_and_ceiling_distance)
 	{
 		my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(135,206,250));

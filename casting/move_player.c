@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 17:42:50 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/05/30 18:09:09 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/03 13:38:31 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ int	move_the_player(int key, t_game *info)
         }
 		else
 			update_coordinates_of_player(info, key);
-		put_rays(info);
-		// mlx_pixel_put(info->mlx_ptr, info->win_ptr,
-		// 	info->x_player, info->y_player, 0xFF0000);
 	}
+		put_rays(info);
 	return (0);
 }

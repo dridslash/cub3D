@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 16:18:57 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/03 14:02:27 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 #define WALL_SIDE_H 1
 #define WALL_SIDE_V 2
 #define WALL_SCALE 70.0
+#define EAST 1
+#define WEST 2
+#define NORTH 3
+#define SOUTH 4
 
 typedef struct game_struct
 {
@@ -32,19 +36,29 @@ typedef struct game_struct
 	void	*img;
 	int     side;
 	char	*addr;
-	 int     width_tex;
+	int     width_tex;
     int     height_tex;
     float   intersection_horizontal;
     float   intersection_vertical;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-    char    *texture_file_name;
-    void    *texture;
+//-------------------------------------------
+    char    *texture_file_name_north;
+	char    *texture_file_name_south;
+	char    *texture_file_name_east;
+	char    *texture_file_name_west;
+//--------------------------------------------
+    void    *texture_north;
+	void    *texture_south;
+	void    *texture_east;
+	void    *texture_west;
+//--------------------------------------------
     char    *addr_texture;
-   int     bits_per_pixel_texture;
+   	int     bits_per_pixel_texture;
     int     line_length_texture;
     int     endian_texture;
+	int		orientation;
 }	t_game;
 
 int		check_wall_in_y_axis(long int x, long int y, t_game *info);
@@ -60,4 +74,5 @@ void	put_direction(t_game *infos);
 void	give_angle_of_player(char c, t_game *game);
 void	update_coordinates_of_player(t_game *info, int key);
 char  *load_color_from_texture(double screen_y,t_game *info,float height, int x);
+int change_texture(t_game *info);
 #endif
