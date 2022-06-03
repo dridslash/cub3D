@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_parse.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:58:23 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/03 15:18:46 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/03 16:52:42 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,6 @@ int		is_texture(char *string);
 int		norme3(char *string, int i);
 int		give_value1(char *string, int *i);
 int		give_value2(char *string, int *i, char **s);
+int 	ff_strlen(char *s);
+char  *observer_checker_map(char **map);
 #endif
