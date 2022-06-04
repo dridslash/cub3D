@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   playerinfo_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:05:32 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 16:45:03 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/04 09:41:36 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	give_angle_of_player(char c, t_game *game)
 	if (c == 'N')
 		game->angle = 4.712389;
 	else if (c == 'S')
-		game->angle = 1.570796;
+		game->angle = 1.5708;
 	else if (c == 'E')
 		game->angle = 0;
 	else if (c == 'W')

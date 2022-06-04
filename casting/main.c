@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:20:26 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/03 17:05:40 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/04 15:23:12 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	observer_checker_map(game.map);
 	game.width_tex = 0;
     game.height_tex = 0;
+	game.forced_side = 0;
     game.intersection_horizontal = 0;
     game.intersection_vertical = 0;
 	give_infos(&info, double_p);
@@ -31,8 +32,8 @@ int	main(int argc, char **argv)
 	game.mlx_ptr = mlx_init();
 	game.win_ptr = mlx_new_window(game.mlx_ptr, 960, 700, "Cub3D");
 	 // image_texture__apply_textures_for_sides
-    game.texture_file_name_north = "../textures/red_brick.xpm";
     game.texture_file_name_south = "../textures/red_wall.xpm";
+    game.texture_file_name_north = "../textures/red_brick.xpm";
     game.texture_file_name_east = "../textures/glowing_wall.xpm";
     game.texture_file_name_west = "../textures/brick_purple.xpm";
     game.texture_north = mlx_xpm_file_to_image(game.mlx_ptr,game.texture_file_name_north,&game.width_tex,&game.height_tex);

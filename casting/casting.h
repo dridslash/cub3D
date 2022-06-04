@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/03 17:00:38 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/04 15:21:24 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@
 #define WALL_SIDE_H 1
 #define WALL_SIDE_V 2
 #define WALL_SCALE 70.0
-#define EAST 1
-#define WEST 2
-#define NORTH 3
-#define SOUTH 4
+#define EAST 11
+#define WEST 12
+#define NORTH 13
+#define SOUTH 14
+// #define SOTUH_WEST 5
+// #define NORTH_EAST 6
+#define force_west 10
 
 typedef struct game_struct
 {
@@ -37,6 +40,7 @@ typedef struct game_struct
 	void	*win_ptr;
 	char	**map;
 	char	*addr;
+	int		forced_side;
 	int		nb_rays;
 	int		x_prime;
 	int     side;
