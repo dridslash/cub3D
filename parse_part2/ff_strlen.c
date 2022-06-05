@@ -6,13 +6,13 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 15:48:11 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/05/16 15:48:38 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/05 18:24:07 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head_mlx.h"
 
-int 	ff_strlen(char *s)
+int	ff_strlen(char *s)
 {
 	int	len;
 

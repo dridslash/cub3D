@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_collision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:41:00 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/04 15:35:25 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/05 17:32:53 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_wall_in_x_axis(long int x, long int y, t_game *info)
 	else if (x <= info->x_player)
 	{
 		info->orientation = WEST;
-		info->forced_side = force_west;
+		info->forced_side = FORCE_WEST;
 		x -= 60;
 		while (y % 60 != 0)
 			y--;

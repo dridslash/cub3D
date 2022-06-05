@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:20:26 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/04 15:23:12 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/05 19:44:58 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,16 @@ int	main(int argc, char **argv)
 	double_p = check_file_args(argc, argv);
 	game.map = check_infos_in(double_p);
 	observer_checker_map(game.map);
-	game.width_tex = 0;
-    game.height_tex = 0;
-	game.forced_side = 0;
-    game.intersection_horizontal = 0;
-    game.intersection_vertical = 0;
 	give_infos(&info, double_p);
-	printf("Check if the map is closed with walls.\n");
 	game.mlx_ptr = mlx_init();
 	game.win_ptr = mlx_new_window(game.mlx_ptr, 960, 700, "Cub3D");
-	 // image_texture__apply_textures_for_sides
-    game.texture_file_name_south = "../textures/red_wall.xpm";
-    game.texture_file_name_north = "../textures/red_brick.xpm";
-    game.texture_file_name_east = "../textures/glowing_wall.xpm";
-    game.texture_file_name_west = "../textures/brick_purple.xpm";
-    game.texture_north = mlx_xpm_file_to_image(game.mlx_ptr,game.texture_file_name_north,&game.width_tex,&game.height_tex);
-    game.texture_south = mlx_xpm_file_to_image(game.mlx_ptr,game.texture_file_name_south,&game.width_tex,&game.height_tex);
-    game.texture_east = mlx_xpm_file_to_image(game.mlx_ptr,game.texture_file_name_east,&game.width_tex,&game.height_tex);
-    game.texture_west = mlx_xpm_file_to_image(game.mlx_ptr,game.texture_file_name_west,&game.width_tex,&game.height_tex);
-    //-------------------------close----------------------------------------
-	game.img = mlx_new_image(game.mlx_ptr, 960, 700);
+	init_vars_in_struct(&game, &info);
+	/*printf("Floor color %d,%d,%d\n", info.floor_color[0], info.floor_color[1], info.floor_color[2]);
+	printf("Ceiling color %d,%d,%d\n", info.ceiling_color[0], info.ceiling_color[1], info.ceiling_color[2]);
+	exit(0);
+
+	printf("Floor color %d,%d,%d\n", game.floor_color[0], game.floor_color[1], game.floor_color[2]);
+	printf("Ceiling color %d,%d,%d\n", game.ceiling_color[0], game.ceiling_color[1], game.ceiling_color[2]);*/
 	game.addr = mlx_get_data_addr(game.img, &game.bits_per_pixel,
 			&game.line_length, &game.endian);
 	get_player_pos_from_map(&game);

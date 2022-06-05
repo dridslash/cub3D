@@ -6,31 +6,21 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:07:59 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/06/05 17:21:52 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/05 18:32:59 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parse_part1/file_parse.h"
 
-    //   while(map[y][x])
-    //   {
-    //      if(map[y][x] == 'S')
-    //         count_elm_s++;
-    //      if(map[y][x] == 'W')
-    //         count_elm_w++;
-    //      if(map[y][x] == 'E')
-    //         count_elm_e++;
-    //     x++;
-    //   }
-
 void	check_if_no_elements(int count_elm_n,
 	int count_elm_s, int count_elm_e, int count_elm_w)
 {
-	 if (count_elm_n == 0 && count_elm_s == 0 && count_elm_w == 0 && count_elm_e == 0)
-   {
-      write(2,"Error\nyou havn't use any of the elements\n",41);
-      exit(1);
-   }
+	if (count_elm_n == 0 && count_elm_s == 0
+		&& count_elm_w == 0 && count_elm_e == 0)
+	{
+		write(2, "Error\nYou haven't use any of the elements\n", 42);
+		exit(1);
+	}
 }
 
 void	init_oriontations(int *count_elm_n,
@@ -42,7 +32,7 @@ void	init_oriontations(int *count_elm_n,
 	*count_elm_e = 0;
 }
 
-void init_y_incre(int *y)
+void	init_y_incre(int *y)
 {
 	*y = 0;
 	(*y)++;
