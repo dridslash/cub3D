@@ -6,13 +6,13 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/04 17:01:17 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/05 16:04:22 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "casting.h"
 
-void	cast(int height, t_game *info, int x)
+void	cast(int height, t_game *info, int x, float y_offset)
 {
 	int	y_in_axis;
 	int	floor_and_ceiling_distance;
@@ -20,27 +20,35 @@ void	cast(int height, t_game *info, int x)
     // int wall_portion;
     // int wall_height;
     char *pixel_color;
-    // int  top_y;
+    int  top_y;
     int  wall;
+	float y_loop;
+	// float start_of = y_offset;
     int window_height = 700;
+	change_texture(info);
     // wall_height = ((window_height / distance) * WALL_SCALE);
-	floor_and_ceiling_distance = (window_height - height ) / 2;
-	y_in_axis = 0;
-    // top_y = (window_height - wall_height) / 2;
+	floor_and_ceiling_distance = (window_height - height) / 2;
+	y_loop = 0;
+    top_y = (60.0) / (float)height;
+	y_in_axis = y_loop * top_y;
     // wall_portion = top_y + wall_height;
-    wall = floor_and_ceiling_distance + height;
+    wall = (floor_and_ceiling_distance + height) - y_offset;
+	// if (wall > 700)
+	// {
+	// 	wall -= y_offset;
+	// }
 	while (y_in_axis <= floor_and_ceiling_distance)
 	{
 		my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(135,206,250));
 		y_in_axis++;
 	}
-     while (y_in_axis < wall)
+     while (y_in_axis < wall  - y_offset)
      {
         //  printf("top_y : %d\n",y_in_axis);
         // color = load_color_from_texture(1.0 - (double)(wall_portion - y_in_axis) / (double)height ,info, height);
         // pixel_color = info->addr_texture  + (y_in_axis * 60 + x * (info->bits_per_pixel_texture / 8));
-        pixel_color = load_color_from_texture((1.0 - ((double)(wall - y_in_axis) / (double)height)),info);
-       my_mlx_pixel_put(info,x,y_in_axis,*(int*)pixel_color);
+        pixel_color = load_color_from_texture((1.0 - ((float)(wall - y_in_axis) / (float)height)),info);
+       my_mlx_pixel_put(info,x,y_in_axis,*(unsigned int*)pixel_color);
         //   my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(163, 60, 52));
         // my_mlx_pixel_put(info,x,y_in_axis,encode_to_rgb(247, 4, 4));
         y_in_axis++;
@@ -98,6 +106,7 @@ void	calculate_height_and_put_wall(t_game *info, float tmp_x,
 	float	adjacent_side_for_fisheye;
 	float	distance_in_2d_map;
 	float	height;
+	float	y_offset;
 
 	info->nb_rays++;
 	distance_in_2d_map = 0;
@@ -107,9 +116,12 @@ void	calculate_height_and_put_wall(t_game *info, float tmp_x,
 		* cos(ray_angle - info->angle);
 	height = ((60 * 700) / fabs(adjacent_side_for_fisheye));
 	if (height > 700)
+	{
+		y_offset = (height - 700) / height;
 		height = 700;
+	}
 	if (info->nb_rays <= 960)
-		cast(height, info, info->x_prime);
+		cast(height, info, info->x_prime, y_offset);
 	info->x_prime += 1;
 }
 
@@ -133,7 +145,6 @@ void	put_rays(t_game *info)
 			tmp_x += cos(ray_angle) * 0.5;
 			tmp_y += sin(ray_angle) * 0.5;
 		}
-		change_texture(info);
 		calculate_height_and_put_wall(info, tmp_x, tmp_y, ray_angle);
 		ray_angle += 0.00109083333;
 	}

@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/04 15:21:24 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/05 10:49:37 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct game_struct
 int		encode_to_rgb(int r, int g, int b);
 void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void	put_rays(t_game *info);
-void	cast(int height, t_game *info, int x);
+void	cast(int height, t_game *info, int x, float y_offset);
 void	put_grid(t_game *info);
 void	put_direction(t_game *infos);
 void	update_coordinates_of_player(t_game *info, int key);
