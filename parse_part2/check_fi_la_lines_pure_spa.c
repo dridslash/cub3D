@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:42:28 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/06/05 17:23:56 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/06 09:59:13 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_first_last_line_helper(char **map, int x, int y)
 		if (map[y][x] != '1' && map[y][x] != ' ' && map[y][x] != '\n')
 		{
 			write(2,
-				"Error\nfirst line || last line has elements"
+				"Error\nFirst line || last line has elements"
 				" not 1 or space\n", 58);
 			exit(1);
 		}

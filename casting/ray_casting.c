@@ -3,46 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oessayeg <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 18:07:29 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/05 18:22:07 by oessayeg         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ray_casting.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/05 18:07:19 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/06 09:48:48 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "casting.h"
 
-void	cast(int height, t_game *info, int x, float y_offset)
+void	cast(int height, t_game *info, int x)
 {
 	int		y_in_axis;
 	char	*pixel_color;
-	int		top_y;
 	int		wall;
 	float	y_loop;
 
 	change_texture(info);
-	y_loop = 0;
-	top_y = (60.0) / (float)height;
-	y_in_axis = y_loop * top_y;
-	wall = ((700 - height) / 2 + height) - y_offset;
+	init_some_vars(&y_in_axis, &y_loop, &wall, height);
 	while (y_in_axis <= (700 - height) / 2)
 	{
-		my_mlx_pixel_put(info, x, y_in_axis, encode_to_rgb(135, 206, 250));
+		put_pixel_ceiling(info, x, y_in_axis);
 		y_in_axis++;
 	}
-	while (y_in_axis < wall - y_offset)
+	while (y_in_axis < wall)
 	{
 		pixel_color = load_color_from_texture((1.0 - ((float)(wall - y_in_axis)
 						/ (float)height)), info);
@@ -51,7 +35,7 @@ void	cast(int height, t_game *info, int x, float y_offset)
 	}
 	while (y_in_axis < 700)
 	{
-		my_mlx_pixel_put(info, x, y_in_axis, encode_to_rgb(160, 160, 160));
+		put_pixel_floor(info, x, y_in_axis);
 		y_in_axis++;
 	}
 	x++;
@@ -104,11 +88,11 @@ void	calculate_height_and_put_wall(t_game *info, float tmp_x,
 	height = ((60 * 700) / fabs(adjacent_side_for_fisheye));
 	if (height > 700)
 	{
-		y_offset = (height - 700) / height;
-		height = 700;
+		y_offset = (height - 700) / 1.0;
+		height -= y_offset;
 	}
 	if (info->nb_rays <= 960)
-		cast(height, info, info->x_prime, y_offset);
+		cast(height, info, info->x_prime);
 	info->x_prime += 1;
 }
 

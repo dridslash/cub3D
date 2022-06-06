@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/05 19:34:08 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/06 10:19:29 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct game_struct
 	void	*win_ptr;
 	char	**map;
 	char	*addr;
-	int		*floor_color;
-	int		*ceiling_color;
+	int		floor_color[3];
+	int		ceiling_color[3];
 	int		forced_side;
 	int		nb_rays;
 	int		x_prime;
@@ -64,17 +64,19 @@ typedef struct game_struct
 	void	*texture_south;
 	void	*texture_east;
 	void	*texture_west;
-	}	t_game;
+}	t_game;
 
+int		exi(void);
 int		encode_to_rgb(int r, int g, int b);
 void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 void	put_rays(t_game *info);
-void	cast(int height, t_game *info, int x, float y_offset);
+void	cast(int height, t_game *info, int x);
 void	put_grid(t_game *info);
 void	put_direction(t_game *infos);
 void	update_coordinates_of_player(t_game *info, int key);
 void	init_vars_in_struct(t_game *game, t_info *info);
-void init_colors(t_game *game, t_info *info);
+void	init_colors(t_game *game, t_info *info);
+void	check_if_mlx_fcts_worked(void *mlx);
 
 //Ray collision check functions
 int		check_wall_in_y_axis(long int x, long int y, t_game *info);
@@ -100,8 +102,13 @@ void	norme_function2(t_game *info);
 void	norme_function3(t_game *info, float angle);
 void	norme_function4(float *tmp_x, float *tmp_y, t_game *info);
 void	change_angle_of_player(int key, t_game *info);
+void	init_some_vars(int *y_in_axis, float *y_loop, int *wall, int height);
+void	put_pixel_ceiling(t_game *info, int x, int y_in_axis);
+void	put_pixel_floor(t_game *info, int x, int y_in_axis);
+void	check_if_images_exist(void *img1, void *img2, void *img3, void *img4);
 int		check_collision1(float tmp_x, float tmp_y, t_game *info);
 int		check_collision2(float tmp_x, float tmp_y, t_game *info);
+
 //--------------------------__TEXTURE__FUNCTIONS__-------------------------
 
 char	*load_color_from_texture(double screen_y, t_game *info);

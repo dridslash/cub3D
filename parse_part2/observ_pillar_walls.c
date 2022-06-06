@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:13:15 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/06/05 17:26:28 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/06 10:09:36 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	check_pillar_walls(char *holder_line)
 			|| holder_line[it] == 'S'
 			|| holder_line[it] == 'E' || holder_line[it] == 'W')
 		{
-			write(2, "Error\nfound 0 or elements in"
-				" your pillar wall first || last", 59);
+			write(2, "Error\nFound 0 or elements in"
+				" your pillar wall first || last\n", 60);
 			exit(1);
 		}
 		it++;

@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:45:03 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/06/05 17:24:10 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/06 10:05:53 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_right_side(char **map)
 			&& get_lenght_based_chr(map[y]) > 1
 			&& pure_space_empty_line(map) < 0)
 			{
-				write(2, "Error\nmap not closed from right side\n", 37);
+				write(2, "Error\nMap not closed from right side\n", 37);
 				exit(1);
 			}
 			x++;
@@ -53,7 +53,7 @@ void	check_left_side(char **map)
 		if (map[y][c] != '1'
 		&& get_lenght_based_chr(map[y]) > 1 && pure_space_empty_line(map) < 0)
 		{
-			write(2, "Error\nmap not closed from left side\n", 36);
+			write(2, "Error\nMap not closed from left side\n", 36);
 			exit(1);
 		}
 		y++;
