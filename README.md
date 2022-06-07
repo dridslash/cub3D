@@ -7,3 +7,4 @@ mentioned earlier.
 
 
  We must use the miniLibX. Either the version that is available on the operating system, or from its sources. If you choose to work with the sources.
+<img width="376" alt="Screen Shot 2022-06-07 at 1 27 25 PM" src="https://user-images.githubusercontent.com/63309639/172378657-cac71fc3-0281-4480-82a1-c1ad8a2e1ed6.png">
