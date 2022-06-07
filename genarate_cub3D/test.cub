@@ -1,7 +1,7 @@
-NO ./../cub3D_mandatory/textures/red_brick.xpm
-SO ./../cub3D_mandatory/textures/red_wall.xpm
-WE ./../cub3D_mandatory/textures/brick_purple.xpm
-EA ./../cub3D_mandatory/textures/glowing_wall.xpm
+NO ./../textures/red_brick.xpm
+SO ./../textures/red_wall.xpm
+WE ./../textures/brick_purple.xpm
+EA ./../textures/glowing_wall.xpm
 
 F 165,165,160
 C 135,206,210
