@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_utils.c                                       :+:      :+:    :+:   */
+/*   main_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:04:14 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/07 12:53:45 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/07 12:55:09 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "casting.h"
+#include "casting_bonus.h"
 
 void	put_pixel_ceiling(t_game *info, int x, int y_in_axis)
 {

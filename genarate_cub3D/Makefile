@@ -38,40 +38,40 @@ SRCS = ../cub3D_mandatory/parse_part1/file_parse1.c\
 	../cub3D_mandatory/casting/main_utils.c\
 	../cub3D_mandatory/casting/main.c\
 
-SRCS_bonus = ../cub3D_bonus/parse_part1/file_parse1.c\
-	  ../cub3D_bonus/parse_part1/gnl/get_next_line.c\
-	../cub3D_bonus/parse_part1/gnl/get_next_line_utils.c\
-	../cub3D_bonus/parse_part1/file_error_fcts1.c\
-	../cub3D_bonus/parse_part1/utils1.c\
-	../cub3D_bonus/parse_part1/file_error_fcts2.c\
-	../cub3D_bonus/parse_part1/file_texture_check.c\
-	../cub3D_bonus/parse_part1/utils2.c \
-	../cub3D_bonus/parse_part1/info_fcts1.c\
-	../cub3D_bonus/casting/move_player.c\
-	../cub3D_bonus/casting/ray_collision.c\
-	../cub3D_bonus/casting/playerinfo_utils.c\
-	../cub3D_bonus/casting/ray_casting.c\
-	../cub3D_bonus/casting/button_check_functions.c\
-	../cub3D_bonus/casting/norme_functions.c \
-	../cub3D_bonus/parse_part1/norme_functions.c\
-	../cub3D_bonus/parse_part1/norme_functions_prime.c\
-	../cub3D_bonus/parse_part2/filter_map.c\
-	../cub3D_bonus/casting/load_color_from_texture.c\
-	../cub3D_bonus/casting/change_texture.c\
-	../cub3D_bonus/parse_part2/check_sides_functions.c\
-	../cub3D_bonus/parse_part2/checking_functions.c\
-	../cub3D_bonus/parse_part2/observ_pillar_walls.c\
-	../cub3D_bonus/parse_part2/element_body_check_functions.c\
-	../cub3D_bonus/parse_part2/counting_and_iterating_funcs.c\
-	../cub3D_bonus/parse_part2/check_fi_la_lines_pure_spa.c\
-	../cub3D_bonus/parse_part2/checking_funcs_pt2.c\
-	../cub3D_bonus/parse_part2/count_check_elements.c\
-	../cub3D_bonus/parse_part2/count_orientations.c\
-	../cub3D_bonus/parse_part2/check_orientations.c\
-	../cub3D_bonus/casting/norme_functions_prime.c\
-	../cub3D_bonus/casting/main_utils.c\
-	../cub3D_bonus/casting/main.c\
-	../cub3D_bonus/casting/mouse_function.c
+SRCS_bonus = ../cub3D_bonus/parse_part1_bonus/file_parse1_bonus.c\
+	  ../cub3D_bonus/parse_part1_bonus/gnl/get_next_line.c\
+	../cub3D_bonus/parse_part1_bonus/gnl/get_next_line_utils.c\
+	../cub3D_bonus/parse_part1_bonus/file_error_fcts1_bonus.c\
+	../cub3D_bonus/parse_part1_bonus/utils1_bonus.c\
+	../cub3D_bonus/parse_part1_bonus/file_error_fcts2_bonus.c\
+	../cub3D_bonus/parse_part1_bonus/file_texture_check_bonus.c\
+	../cub3D_bonus/parse_part1_bonus/utils2_bonus.c \
+	../cub3D_bonus/parse_part1_bonus/info_fcts1_bonus.c\
+	../cub3D_bonus/casting_bonus/move_player_bonus.c\
+	../cub3D_bonus/casting_bonus/ray_collision_bonus.c\
+	../cub3D_bonus/casting_bonus/playerinfo_utils_bonus.c\
+	../cub3D_bonus/casting_bonus/ray_casting_bonus.c\
+	../cub3D_bonus/casting_bonus/button_check_functions_bonus.c\
+	../cub3D_bonus/casting_bonus/norme_functions_bonus.c \
+	../cub3D_bonus/parse_part1_bonus/norme_functions_bonus.c\
+	../cub3D_bonus/parse_part1_bonus/norme_functions_prime_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/filter_map_bonus.c\
+	../cub3D_bonus/casting_bonus/load_color_from_texture_bonus.c\
+	../cub3D_bonus/casting_bonus/change_texture_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/check_sides_functions_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/checking_functions_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/observ_pillar_walls_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/element_body_check_functions_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/counting_and_iterating_funcs_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/check_fi_la_lines_pure_spa_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/checking_funcs_pt2_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/count_check_elements_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/count_orientations_bonus.c\
+	../cub3D_bonus/parse_part2_bonus/check_orientations_bonus.c\
+	../cub3D_bonus/casting_bonus/norme_functions_prime_bonus.c\
+	../cub3D_bonus/casting_bonus/main_utils_bonus.c\
+	../cub3D_bonus/casting_bonus/main_bonus.c\
+	../cub3D_bonus/casting_bonus/mouse_function_bonus.c
 
 all : $(NAME)
 	
