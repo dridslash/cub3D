@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 13:36:14 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/07 10:49:02 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/07 11:32:58 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	move_the_player(int key, t_game *info)
 		mlx_destroy_image(info->mlx_ptr, info->img);
 		info->img = mlx_new_image(info->mlx_ptr, 960, 700);
 		info->addr = mlx_get_data_addr(info->img, &info->bits_per_pixel,
-			&info->line_length, &info->endian);
+				&info->line_length, &info->endian);
 		if (key == 123 || key == 124)
 			change_angle_of_player(key, info);
 		else if (key == 53)
