@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   casting_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/07 13:01:36 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/09 18:29:01 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ typedef struct game_struct
 	int		endian_texture;
 	int		orientation;
 	int		last_x_mouse;
+	int		is_shot;
+	int		bits;
+	int		line;
+	int		endia;
 	char	*texture_file_name_north;
 	char	*texture_file_name_south;
 	char	*texture_file_name_east;
@@ -67,6 +71,8 @@ typedef struct game_struct
 	void	*texture_south;
 	void	*texture_east;
 	void	*texture_west;
+	void	*gun_img;
+	char	*gun_char;
 }	t_game;
 
 int		exi(void);
@@ -114,7 +120,17 @@ void	put_pixel_floor(t_game *info, int x, int y_in_axis);
 void	check_if_images_exist(void *img1, void *img2, void *img3, void *img4);
 int		check_collision1(float tmp_x, float tmp_y, t_game *info);
 int		check_collision2(float tmp_x, float tmp_y, t_game *info);
+void	clear_and_set(t_game *game);
+void	norme_f1(t_game *game, int *x, int *y, int *tmp_y);
+void	increment(int *x1, int *x2);
+void	init_v(int *tmp_x, int *x);
+void	give_gun_img(t_game *game, char *img);
+void	check_texture_side(t_game *info, float tmp_x, float tmp_y);
 
+//Gun animation
+void	gun_animation(t_game *game, char *img);
+void	gun_shot(t_game *game);
+int		gun_up(int key, t_game *game);
 //--------------------------__TEXTURE__FUNCTIONS__-------------------------
 
 char	*load_color_from_texture(double screen_y, t_game *info);

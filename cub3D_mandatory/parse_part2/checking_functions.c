@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:34:05 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/06/05 17:24:26 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/10 09:32:40 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_body_lines_for_zero_helper(char **map, int hold_ind, int x)
 		|| map[hold_ind - 1][x] == '\n'))
 	{
 		write(2,
-			"Error\ngap under or above a 0"
+			"Error\ngap under or above a 0 "
 			"|| you have an empty line\n",
 			55);
 		exit(1);
@@ -41,7 +41,9 @@ void	check_body_lines_for_zero(char **map)
 		x = 0;
 		while (map[hold_ind][x])
 		{
-			if (map[hold_ind][x] == 'N' || map[hold_ind][x] == '0')
+			if (map[hold_ind][x] == 'N' || map[hold_ind][x] == 'S'
+				|| map[hold_ind][x] == 'E'
+				|| map[hold_ind][x] == 'W' || map[hold_ind][x] == '0')
 			{
 				check_body_lines_for_zero_helper(map, hold_ind, x);
 			}

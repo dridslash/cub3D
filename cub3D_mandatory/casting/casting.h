@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:27:19 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/06 17:32:26 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/09 13:02:56 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	init_some_vars(int *y_in_axis, float *y_loop, int *wall, int height);
 void	put_pixel_ceiling(t_game *info, int x, int y_in_axis);
 void	put_pixel_floor(t_game *info, int x, int y_in_axis);
 void	check_if_images_exist(void *img1, void *img2, void *img3, void *img4);
+void	just_for_norme2(t_game *info, float tmp_x, float tmp_y);
 int		check_collision1(float tmp_x, float tmp_y, t_game *info);
 int		check_collision2(float tmp_x, float tmp_y, t_game *info);
 

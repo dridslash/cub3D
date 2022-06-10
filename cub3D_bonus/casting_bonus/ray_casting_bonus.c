@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/07 12:55:56 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/09 18:30:00 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	cast(int height, t_game *info, int x)
 
 int	ray_touched_wall(t_game *info, float tmp_x, float tmp_y)
 {
+	check_texture_side(info, tmp_x, tmp_y);
 	if (check_collision1(tmp_x, tmp_y, info) == 1)
 		return (1);
 	else if (check_collision2(tmp_x, tmp_y, info) == 1)
@@ -119,5 +120,4 @@ void	put_rays(t_game *info)
 		calculate_height_and_put_wall(info, tmp_x, tmp_y, ray_angle);
 		ray_angle += 0.00109083333;
 	}
-	mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img, 0, 0);
 }

@@ -6,11 +6,24 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 09:20:36 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/06/07 12:54:43 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/09 18:30:36 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "casting_bonus.h"
+
+void	check_texture_side(t_game *info, float tmp_x, float tmp_y)
+{
+	if (tmp_x >= info->x_player && tmp_y >= info->y_player
+		&& lroundf(tmp_x) % 60 == 0 && lroundf(tmp_y) % 60 == 0
+		&& info->map[lroundf(tmp_y) / 60][(lroundf(tmp_x) - 60) / 60] == '1'
+		&& info->map[lroundf(tmp_y) / 60][lroundf(tmp_x) / 60] == '0')
+	{
+			info->intersection_horizontal = tmp_x;
+			info->side = WALL_SIDE_H;
+			info->orientation = SOUTH;
+	}
+}
 
 void	just_for_norme1(t_game *info, int option)
 {

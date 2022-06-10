@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_sides_functions.c                            :+:      :+:    :+:   */
+/*   check_sides_functions_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:45:03 by mnaqqad           #+#    #+#             */
-/*   Updated: 2022/06/07 13:00:11 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/10 09:39:57 by mnaqqad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parse_part1_bonus/file_parse_bonus.h"
+
+void	special_case_of_right_side(char **map, int x, int y)
+{
+	if (map[y][x + 1] == '\0' && map[y][x - 1] == '0')
+	{
+		write(2, "Error\nMap not closed from right side\n", 37);
+		exit(1);
+	}
+}
 
 void	check_right_side(char **map)
 {
@@ -25,13 +34,15 @@ void	check_right_side(char **map)
 		while (map[y][x])
 		{
 			if (map[y][x + 1] == '\0'
-			&& map[y][x - 1] != '1'
+			&& (map[y][x - 1] != '1')
 			&& get_lenght_based_chr(map[y]) > 1
 			&& pure_space_empty_line(map) < 0)
 			{
 				write(2, "Error\nMap not closed from right side\n", 37);
 				exit(1);
 			}
+			else
+				special_case_of_right_side(map, x, y);
 			x++;
 		}
 		y++;

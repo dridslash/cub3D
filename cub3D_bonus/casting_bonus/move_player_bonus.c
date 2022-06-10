@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 13:36:14 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/07 12:55:19 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/09 17:49:06 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,10 @@ void	update_coordinates_of_player(t_game *info, int key)
 int	move_the_player(int key, t_game *info)
 {
 	if (key == 0 || key == 1 || key == 2 || key == 13
-		|| key == 123 || key == 124 || key == 53)
+		|| key == 123 || key == 124 || key == 53 || key == 49)
 	{
 		mlx_clear_window(info->mlx_ptr, info->win_ptr);
 		mlx_destroy_image(info->mlx_ptr, info->img);
-		info->minimap_img = mlx_new_image(info->mlx_ptr, 192, 160);
 		info->img = mlx_new_image(info->mlx_ptr, 960, 700);
 		info->addr = mlx_get_data_addr(info->img, &info->bits_per_pixel,
 				&info->line_length, &info->endian);
@@ -61,6 +60,7 @@ int	move_the_player(int key, t_game *info)
 		else
 			update_coordinates_of_player(info, key);
 		put_rays(info);
+		gun_animation(info, "../textures/gun111.xpm");
 	}
 	return (0);
 }

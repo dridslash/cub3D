@@ -6,7 +6,7 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 17:28:31 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/06 09:48:48 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/09 13:00:55 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	cast(int height, t_game *info, int x)
 
 int	ray_touched_wall(t_game *info, float tmp_x, float tmp_y)
 {
+	just_for_norme2(info, tmp_x, tmp_y);
 	if (check_collision1(tmp_x, tmp_y, info) == 1)
 		return (1);
 	else if (check_collision2(tmp_x, tmp_y, info) == 1)

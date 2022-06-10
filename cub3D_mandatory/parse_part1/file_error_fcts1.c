@@ -6,7 +6,7 @@
 /*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 16:00:55 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/02 21:49:49 by oessayeg         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:43:03 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_file_name(char *file)
 	int	i;
 
 	i = ft_strlen(file) - 1;
-	if (file[0] == '.')
+	if (file[0] == '.' && file[1] != '.' && file[1] != '/')
 	{
 		printf("Error\nHidden file detected.\n");
 		exit(EXIT_FAILURE);

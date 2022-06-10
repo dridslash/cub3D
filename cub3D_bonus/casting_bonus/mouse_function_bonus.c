@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_function_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oessayeg <oessayeg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 10:56:32 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/07 12:55:13 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/09 18:22:18 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int	mouse_handle(int x, int y, t_game *info)
 	}
 	info->last_x_mouse = x;
 	put_rays(info);
+	gun_animation(info, "../textures/gun111.xpm");
+	mlx_put_image_to_window(info->mlx_ptr, info->win_ptr, info->img, 0, 0);
 	return (1);
 }

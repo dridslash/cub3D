@@ -71,7 +71,9 @@ SRCS_bonus = ../cub3D_bonus/parse_part1_bonus/file_parse1_bonus.c\
 	../cub3D_bonus/casting_bonus/norme_functions_prime_bonus.c\
 	../cub3D_bonus/casting_bonus/main_utils_bonus.c\
 	../cub3D_bonus/casting_bonus/main_bonus.c\
-	../cub3D_bonus/casting_bonus/mouse_function_bonus.c
+	../cub3D_bonus/casting_bonus/mouse_function_bonus.c\
+	../cub3D_bonus/casting_bonus/gun_fcts_bonus.c\
+	../cub3D_bonus/casting_bonus/norme_functions2_bonus.c
 
 all : $(NAME)
 	
@@ -85,13 +87,13 @@ $(NAME): $(SRCS)
 	@echo "\033[1;33m   ██║      ██║   ██║ ██╔══██╗ ╚═══██╗██║  ██║"
 	@echo "\033[1;33m   ╚██████╗ ╚██████╔╝ ██████╔╝██████╔╝██████╔╝ "
 	@echo "\033[1;90m    ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝"
-	@echo "\033[1;33m                                             "
+	@echo "\033[1;33m                                             \033[0m"
 
 bonus : $(NAME_BONUS)
 
 $(NAME_BONUS): $(SRCS_bonus)
 	@gcc  $(FLAGS) $(SRCS_bonus) -o $(NAME_BONUS)
-	@echo "\033[0;32m cub3D_BONUS Ready to be played enjoy ✔ ⚀ !!"
+	@echo "\033[0;32m cub3D_BONUS Ready to be played enjoy ✔ ⚀ !!\033[0m"
 	@echo "\033[1;33m                                                                                               "
 	@echo "\033[1;33m   ██████╗  ██╗   ██╗ ██████╗ ██████╗ ██████╗    ██████╗  ██████╗ ███╗   ██╗██╗   ██╗███████╗  "
 	@echo "\033[1;33m   ██╔════╝ ██║   ██║ ██╔══██╗╚════██╗██╔══██╗   ██╔══██╗██╔═══██╗████╗  ██║██║   ██║██╔════╝  "
@@ -99,12 +101,12 @@ $(NAME_BONUS): $(SRCS_bonus)
 	@echo "\033[1;33m   ██║      ██║   ██║ ██╔══██╗ ╚═══██╗██║  ██║-- ██╔══██╗██║   ██║██║╚██╗██║██║   ██║╚════██║  "
 	@echo "\033[1;33m   ╚██████╗ ╚██████╔╝ ██████╔╝██████╔╝██████╔╝-- ██████╔╝╚██████╔╝██║ ╚████║╚██████╔╝███████║  "
 	@echo "\033[1;90m    ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝    ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚══════╝  "
-	@echo "\033[1;33m                                                                                               "
+	@echo "\033[1;33m                                                                                        \033[0m"
 
 clean :
 	@rm -f $(NAME)
 	@rm -f $(NAME_BONUS)
-	@echo "\033[0;31m cub3D/bonus ex deleted ☯"
+	@echo "\033[0;31m cub3D/bonus ex deleted ☯\033[0m "
 
 fclean : clean
 

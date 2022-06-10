@@ -6,12 +6,11 @@
 /*   By: mnaqqad <mnaqqad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:41:00 by oessayeg          #+#    #+#             */
-/*   Updated: 2022/06/07 12:56:01 by mnaqqad          ###   ########.fr       */
+/*   Updated: 2022/06/07 13:19:17 by oessayeg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "casting_bonus.h"
-
 
 int	check_wall_in_x_axis(long int x, long int y, t_game *info)
 {
